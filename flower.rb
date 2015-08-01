@@ -17,9 +17,9 @@ class Flower
 
     raise InvalidCommand.new if number < 1 || DATA.keys.include?(code) == false
 
-    bundle_price        = DATA[code][:prices]
-    output_bundle_set   = find_minimum_bundle(bundle_price.keys, number.to_i)
-    format_output(bundle_price, output_bundle_set)
+    price_set          = DATA[code][:prices]
+    output_bundle_set  = find_minimum_bundle(price_set.keys, number.to_i)
+    format_output(price_set, output_bundle_set)
   end
 
   def find_minimum_bundle(array, number)
@@ -34,14 +34,14 @@ class Flower
     matched_combinations.min_by{ |combo| sum_first_element_of_array(combo) }
   end
 
-  def price_format(no_of_bundle, no_of_flower_per_bundle, bundle_set)
-    "#{no_of_bundle} x #{no_of_flower_per_bundle} $#{bundle_set[no_of_flower_per_bundle]}"
+  def price_format(no_of_bundle, no_of_flower_per_bundle, price_set)
+    "#{no_of_bundle} x #{no_of_flower_per_bundle} $#{price_set[no_of_flower_per_bundle]}"
   end
 
-  def format_output(bundle_price, bundle_set)
+  def format_output(price_set, bundle_set)
     bundle_set.select!{ |set| set[0] != 0 }
-    total_price = bundle_set.collect{ |set| set[0] * bundle_price[set[1]] }.sum.round(2)
-    "$#{total_price}\n\t" + bundle_set.collect{ |set| price_format(set[0], set[1], bundle_price) }.join("\n\t")
+    total_price = bundle_set.collect{ |set| set[0] * price_set[set[1]] }.sum.round(2)
+    "$#{total_price}\n\t" + bundle_set.collect{ |set| price_format(set[0], set[1], price_set) }.join("\n\t")
   end
 
   def sum_first_element_of_array(combination)
