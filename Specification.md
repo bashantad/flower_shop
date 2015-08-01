@@ -20,18 +20,21 @@ Given a customer order you are required to determine the cost and bundle breakdo
 
 Each order has a series of lines with each line containing the number of items followed by the product code
 An example input:
-10 R12 15 L09 13 T58
+
+    10 R12 
+    15 L09 
+    13 T58
 
 <strong>Output:</strong>
 
 A successfully passing test(s) that demonstrates the following output: (The format of the output is not important)
 
-
-  10 R12 $12.99
+    10 R12 $12.99
       1 x 10 $12.99
-  15 L09 $41.90
+    15 L09 $41.90
       1 x 9 $24.95
       1 x 6 $16.95
-  13 T58 $25.85
-    2 x 5 $9.95
-    1 x 3 $5.95
+    13 T58 $25.85
+      2 x 5 $9.95
+      1 x 3 $5.95
+      
